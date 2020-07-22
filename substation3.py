@@ -103,6 +103,16 @@ server.start()
 
 print("Server start at {}".format(url))
 
+
+try:
+    while True:
+        i = 1
+        while i < 5:
+            time.sleep(0.001)
+
+finally:
+    #close connection, remove subcsriptions, etc
+    server.stop()
 """
 i = 1
 while i < 5:
