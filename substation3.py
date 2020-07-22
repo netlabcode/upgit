@@ -22,7 +22,7 @@ variant2 = ua.Variant(0, ua.VariantType.Float)
 
 
 node = server.get_objects_node()
-Param = node.add_object(addspace,"Substation3")
+Param = node.add_object(addspace,"PF")
 
 
 S3_M1_B25_Li_02_25_CB = Param.add_variable(addspace,"S3_M1_B25_Li_02_25_CB",variant)
@@ -95,6 +95,7 @@ S3_M6_B37_G8_f_res = Param.add_variable(addspace,"S3_M6_B37_G8_f_res",variant2)
 S3_M6_B37_G8_f_res.set_writable(True)
 S3_M6_B37_G8_Ld_res = Param.add_variable(addspace,"S3_M6_B37_G8_Ld_res",variant2)
 S3_M6_B37_G8_Ld_res.set_writable(True)
+
 
 
 

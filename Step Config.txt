@@ -1,0 +1,10 @@
+ssh -X crof11.ewi.tudelft.nl
+sudo mn -c
+sudo mn --topo single,3
+sudo mn --topo linear,3
+
+Connect to host VM
+sudo ip addr add 10.0.0.99/24 dev vnet
+
+sudo ip addr add 10.0.0.99/24 dev s1
+sudo ip link set s1 up
