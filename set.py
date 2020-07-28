@@ -2,7 +2,7 @@ from opcua import Client
 from opcua import ua
 import time
 
-url = "opc.tcp://192.168.56.108:8899/freeopcua/server/"
+url = "opc.tcp://127.0.0.1:8899/freeopcua/server/"
 
 client = Client(url)
 
@@ -46,7 +46,7 @@ val33 = client.get_node("ns=2;i=35")
 
 
 print("--")
-val4.set_value(0, ua.VariantType.Int16)
+val5.set_value(0, ua.VariantType.Int16)
 
 
 client.disconnect()

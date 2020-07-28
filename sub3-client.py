@@ -82,13 +82,8 @@ while i < 60:
 	value33 = val33.get_value()
 	
 
-
-	print("M1 : "+str(value0)+"-"+str(value1)+"-"+str(value2)+"-"+str(value3)+"-"+str(value4))
-	print("M2 : "+str(value5)+"-"+str(value6)+"-"+str(value7)+"-"+str(value8)+"-"+str(value9))
-	print("M3 : "+str(value10)+"-"+str(value11)+"-"+str(value12)+"-"+str(value13)+"-"+str(value14)+"-"+str(value15)+"-"+str(value16)+"-"+str(value17)+"-"+str(value18))
-	print("M4 : "+str(value19)+"-"+str(value20)+"-"+str(value21)+"-"+str(value22)+"-"+str(value23))
-	print("M4 : "+str(value24)+"-"+str(value25))
-	print("M3 : "+str(value26)+"-"+str(value27)+"-"+str(value28)+"-"+str(value29)+"-"+str(value30)+"-"+str(value31)+"-"+str(value32)+"-"+str(value33))
+	print("BK: "+str(value5)+" - BK Res: "+str(value6))
+	print("P: "+str(value7)+" - Q: "+str(value8)+" - V: "+str(value9))
 	print("======================"+"\n")
 	
 
