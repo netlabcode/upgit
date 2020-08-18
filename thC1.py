@@ -22,11 +22,12 @@ def serverTwo():
 	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s2:
 		s2.connect((HOST, PORT2))
 		a = 1
+		value2 = 0
 		while a < 6:
 			#recive data from server
 			time.sleep(1)
 
-			value2 = 1
+			value2 = value2+5
 			stringd2 = str(value2)
 			data2 = stringd2.encode()
 
