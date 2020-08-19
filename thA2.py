@@ -81,24 +81,59 @@ def serverOne():
 					#print('S1:',data1)
 
 
+# Define a function for the thread
 def serverTwo():
 	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s2:
-		s2.bind((HOST,PORT2))
+		s2.bind(('',PORT2))
 		s2.listen()
 		conn2, addr = s2.accept()
+		valueb=0
 		with conn2:
 			print('Server 2 from:',addr)
 			while True:
-				i = 1
-				while i < 6:
-					data2 = conn2.recv(1024)
-					print('S2:',data2)
+				b = 1
+				value = 2
+				while b < 6:
+
+					"""
+					#Update OPC value
+					value1 = val1.get_value()
+					value2 = val2.get_value()
+					value3 = val3.get_value()
+					value4 = val4.get_value()
+					value5 = val5.get_value()
+					value6 = val6.get_value()
+					value7 = val7.get_value()
+					value8 = val8.get_value()
+					value9 = val9.get_value()
+					value10 = val10.get_value()
+					value11 = val11.get_value()
+					value12 = val12.get_value()
+					value13 = val13.get_value()
+					value14 = val14.get_value()
+					"""
+
+					time.sleep(1)
+
+					#covert inetger to string
+					valueb = valueb+5
+					stringdb = str(valueb)
+
+					#stringd = str(value1)+"-"+str(value2)+"-"+str(value3)
+
+					#convert string to bytes data
+					data2 = stringdb.encode()
+
+					#send data back to client
+					conn2.sendall(data2)
+
+					#print('S1:',data1)
 
 
 # Create two threads as follows
 try:
    _thread.start_new_thread( serverOne, ( ) )
-#   _thread.start_new_thread( serverTwo, ( ) )
+   _thread.start_new_thread( serverTwo, ( ) )
 except:
    print ("Error: unable to start thread")
 

@@ -4,12 +4,12 @@ import time
 import socket
 
 
-HOST1 = '10.0.0.1'
-HOST2 = '10.0.0.2'
+HOST1 = '192.168.1.100'
+HOST2 = '172.16.0.100'
 PORT1 = 991
 PORT2 = 992
 PORTS1 = 881
-PORTS2 = 882
+PORTS2 = 883
 
 # Define a function for the thread
 def serverOne():
@@ -31,34 +31,32 @@ def serverOne():
 						conn1.sendall(data1)
 						print('S1:',data1)
 
-
+# Define a function for the thread
 def serverTwo():
 	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sc2:
-		sc2.connect((HOST, PORT2))
+		sc2.connect((HOST1, PORT2))
 
 		with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s2:
-			s2.bind((HOST,PORTS2))
+			s2.bind((HOST2,PORTS2))
 			s2.listen()
-			conn2, addr = s2.accept()
+			conn2, addr2 = s2.accept()
 			with conn2:
-				print('S2 from:',addr)
+				print('S2 from:',addr2)
 				while True:
-					i = 1
-					while i < 6:
+					b = 1
+					while b < 6:
 						#recive data from server A
-						#data2 = sc2.recv(1024)
 						data2 = conn2.recv(1024)
-						print('S2:',data2)
 						#send data to server C
-						#conn2.sendall(data2)
 						sc2.sendall(data2)
+						print('S2:',data2)
 
 						
 
 # Create two threads as follows
 try:
    _thread.start_new_thread( serverOne, ( ) )
-#   _thread.start_new_thread( serverTwo, ( ) )
+   _thread.start_new_thread( serverTwo, ( ) )
 except:
    print ("Error: unable to start thread")
 

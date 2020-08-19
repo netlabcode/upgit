@@ -81,24 +81,28 @@ def serverOne():
 					#print('S1:',data1)
 
 
+# Define a function for the thread
 def serverTwo():
 	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s2:
-		s2.bind((HOST,PORT2))
+		s2.bind(('',PORT2))
 		s2.listen()
 		conn2, addr = s2.accept()
+		valueb=0
 		with conn2:
 			print('Server 2 from:',addr)
 			while True:
-				i = 1
-				while i < 6:
+				b = 1
+				value = 2
+				while b < 6:
 					data2 = conn2.recv(1024)
-					print('S2:',data2)
+					print('Data2:',data2)
+
 
 
 # Create two threads as follows
 try:
    _thread.start_new_thread( serverOne, ( ) )
-#   _thread.start_new_thread( serverTwo, ( ) )
+   _thread.start_new_thread( serverTwo, ( ) )
 except:
    print ("Error: unable to start thread")
 

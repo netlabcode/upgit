@@ -4,9 +4,9 @@ import time
 import socket
 
 
-HOST2 = '10.0.0.2'
+HOST2 = '172.16.0.100'
 PORT1 = 881
-PORT2 = 882
+PORT2 = 883
 
 # Define a function for the thread
 def serverOne():
@@ -18,23 +18,28 @@ def serverOne():
 			data1 = s1.recv(1024)
 			print('Data1:',data1)
 
+# Define a function for the thread
 def serverTwo():
 	with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s2:
-		s2.connect((HOST, PORT2))
-		a = 1
-		value2 = 0
-		while a < 6:
-			#recive data from server
+		s2.connect((HOST2, PORT2))
+		x = 1
+		value=0
+		while x < 6:
+
 			time.sleep(1)
 
-			value2 = value2+5
-			stringd2 = str(value2)
-			data2 = stringd2.encode()
+			#covert inetger to string
+			value = value+5
+			stringd = str(value)
+
+			#stringd = str(value1)+"-"+str(value2)+"-"+str(value3)
+
+			#convert string to bytes data
+			data2 = stringd.encode()
 
 			s2.sendall(data2)
 
-			#data2 = s2.recv(1024)
-			#print('Data2:',data2)
+
 
 
 
@@ -42,7 +47,7 @@ def serverTwo():
 # Create two threads as follows
 try:
    _thread.start_new_thread( serverOne, ( ) )
-#   _thread.start_new_thread( serverTwo, ( ) )
+   _thread.start_new_thread( serverTwo, ( ) )
 except:
    print ("Error: unable to start thread")
 
