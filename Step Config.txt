@@ -1,4 +1,6 @@
-ssh -X crof11.ewi.tudelft.nl
+sudssh -X crof11.ewi.tudelft.nl
+sudo fuser -k 6653/tcp
+
 sudo mn -c
 sudo mn --topo single,3
 sudo mn --topo linear,3
@@ -8,3 +10,6 @@ sudo ip addr add 10.0.0.99/24 dev vnet
 
 sudo ip addr add 10.0.0.99/24 dev s1
 sudo ip link set s1 up
+
+sudo mn --custom topo.py --topo mytopo
+sudo python toporouter.py 
