@@ -58,7 +58,7 @@ class NetworkTopo( Topo ):
         r2 = self.addHost('r2', cls=LinuxRouter, ip='10.1.0.1/24')
 
         # Add 2 switches
-        s1, s2 = [self.addSwitch(s) for s in ('s1', 's2')]
+        s1, s2, s3 = [self.addSwitch(s) for s in ('s1', 's2', 's3')]
 
         # Add host-switch links in the same subnet
         self.addLink(s1, r1, intfName2='r1-eth1',
@@ -71,12 +71,15 @@ class NetworkTopo( Topo ):
         self.addLink(r1, r2, intfName1='r1-eth2', intfName2='r2-eth2',
                   params1={'ip': '10.100.0.1/24'}, params2={'ip': '10.100.0.2/24'})
 
+        self.addLink( s2, s3 )
+
         # Adding hosts specifying the default route
         d1 = self.addHost(name='d1', ip='10.0.0.251/24', defaultRoute='via 10.0.0.1')
         d2 = self.addHost(name='d2', ip='10.1.0.252/24', defaultRoute='via 10.1.0.1')
+        d3 = self.addHost(name='d3', ip='10.1.0.253/24', defaultRoute='via 10.1.0.1')
 
         # Add host-switch links
-        for d, s in [(d1, s1), (d2, s2)]:
+        for d, s in [(d1, s1), (d2, s2), (d3, s3)]:
             self.addLink(d, s)
 
 
