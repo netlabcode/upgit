@@ -1,5 +1,5 @@
 #!/user/bin/env python3
-#from opcua import Client
+from opcua import Client
 import socket
 import binascii
 import _thread
@@ -16,9 +16,9 @@ url = "opc.tcp://10.1.0.99:8899/freeopcua/server/"
 client = Client(url)
 client.connect()
 print("connected to OPC UA Server")
-val1 = client.get_node("ns=2;i=3")
-val2 = client.get_node("ns=2;i=4")
-val3 = client.get_node("ns=2;i=5")
+val1 = client.get_node("ns=2;i=6")
+val2 = client.get_node("ns=2;i=7")
+val3 = client.get_node("ns=2;i=8")
 
 
 # Define a function for the thread
@@ -35,31 +35,20 @@ def serverOne():
 				value = 2
 				while a < 6:
 
-					"""
+
 					#Update OPC value
 					value1 = val1.get_value()
 					value2 = val2.get_value()
 					value3 = val3.get_value()
-					value4 = val4.get_value()
-					value5 = val5.get_value()
-					value6 = val6.get_value()
-					value7 = val7.get_value()
-					value8 = val8.get_value()
-					value9 = val9.get_value()
-					value10 = val10.get_value()
-					value11 = val11.get_value()
-					value12 = val12.get_value()
-					value13 = val13.get_value()
-					value14 = val14.get_value()
-					"""
+
 
 					time.sleep(1)
 
 					#covert inetger to string
 					value = value+1
-					stringd = str(value)
+					#stringd = str(value)
 
-					#stringd = str(value1)+"-"+str(value2)+"-"+str(value3)
+					stringd = str(value1)+"-"+str(value2)+"-"+str(value3)
 
 					#convert string to bytes data
 					data1 = stringd.encode()
@@ -67,7 +56,7 @@ def serverOne():
 					#send data back to client
 					conn1.sendall(data1)
 
-					#print('S1:',data1)
+					print('S1:',data1)
 
 
 # Define a function for the thread

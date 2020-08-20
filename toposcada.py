@@ -33,6 +33,7 @@ from mininet.net import Mininet
 from mininet.node import Node
 from mininet.log import setLogLevel, info
 from mininet.cli import CLI
+import os
 
 
 class LinuxRouter( Node ):
@@ -117,11 +118,15 @@ def run():
     #r2.cmd("ip route add 10.0.0.0/24 via 10.100.0.1 dev r2-eth2")
     info( net[ 'r1' ].cmd( 'route' ) )
     info( net[ 'r2' ].cmd( 'route' ) )
-    """
-    info( net[ 'm1' ].cmd( 'python3 hello.py' ) )
-    info( net[ 'm2' ].cmd( 'python3 hello.py' ) )
+
+    info(os.system('date'))
+    info(os.system('ip addr add 10.1.0.99/24 dev s1'))
+    info(os.system('ip link set s1 up'))
+    
+    info( net[ 'm1' ].cmd( 'python3 mu1.py &amp' ) )
+    info( net[ 'm2' ].cmd( 'python3 mu2.py &amp' ) )
     info( net[ 'm3' ].cmd( 'python3 hello.py' ) )
-    """
+    
     CLI( net )
     net.stop()
 
