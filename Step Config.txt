@@ -13,3 +13,15 @@ sudo ip link set s1 up
 
 sudo mn --custom topo.py --topo mytopo
 sudo python toporouter.py 
+
+sudo apt install openvswitch-testcontroller
+sudo cp /usr/bin/ovs-testcontroller /usr/bin/ovs-controller
+
+ps -x | grep python
+ps -x | grep script.py
+kill 3935 (process ID)
+
+python script.py &amp
+&amp
+
+python script.py &amp
