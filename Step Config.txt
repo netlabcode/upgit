@@ -24,4 +24,10 @@ kill 3935 (process ID)
 python script.py &amp
 &amp
 
+sudo apt install sqlite3
+sudo apt install sqlitebrowser
+
 python script.py &amp
+
+pip3 install -U Flask
+env FLASK_APP=web.py flask run
